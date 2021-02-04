@@ -4,12 +4,10 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
     cors: {
         origins: "*",
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
-app.use(require('cors')())
-
-
 
 //abrindo evento de conexão
 io.on('connection', (socket) => {
