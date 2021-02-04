@@ -1,12 +1,13 @@
 var express = require('express')
-var app = express();
-var http = require('http').createServer(app);
-const io = require("socket.io")(http, {
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
     cors: {
-        origin: "https://chatfriendscs.herokuapp.com",
-        methods: ["GET", "POST"]
+        origins: "*"
     }
 });
+
+
 
 
 //abrindo evento de conexão
@@ -32,6 +33,8 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 })
 
-http.listen(process.env.PORT || 3000, () => {
-    console.log("SERVER ON")
-})
+const PORT = 8080;
+
+server.listen(PORT, () => {
+    console.log(`Server running at ${PORT}`);
+});
