@@ -1,0 +1,1 @@
+var html = filterXSS('<script>alert("xss");</scr' + 'ipt>');
