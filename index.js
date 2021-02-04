@@ -1,7 +1,12 @@
 var express = require('express')
 var app = express();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+const io = require("socket.io")(http, {
+    cors: {
+        origin: "https://chatfriendscs.herokuapp.com",
+        methods: ["GET", "POST"]
+    }
+});
 
 
 //abrindo evento de conexão
