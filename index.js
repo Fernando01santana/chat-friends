@@ -33,8 +33,6 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 })
 
-
-
-server.listen(process.env.PORT, () => {
-    console.log(`Server running at ${PORT}`);
-});
+server.listen(process.env.PORT || 3000, () => {
+    console.log("SERVER ON")
+})
