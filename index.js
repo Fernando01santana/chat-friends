@@ -33,8 +33,8 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 })
 
-const PORT = 8080;
 
-server.listen(PORT, () => {
+
+server.listen(process.env.PORT, () => {
     console.log(`Server running at ${PORT}`);
 });
