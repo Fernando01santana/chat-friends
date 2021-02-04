@@ -1,7 +1,12 @@
 var express = require('express')
 var app = express();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http, {
+    cors: {
+        origin: "http://localhost:4200",
+        methods: ["GET", "POST"]
+    }
+});
 
 
 //abrindo evento de conexão
@@ -26,11 +31,8 @@ app.get('/', (req, res) => {
 app.get('/chat', (req, res) => {
     res.render('chat');
 })
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(require('cors')())
+
 http.listen(process.env.PORT || 3000, () => {
     console.log("SERVER ON")
 })
