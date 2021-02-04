@@ -1,13 +1,8 @@
 var express = require('express')
 var app = express();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http, {
-    cors: {
-        origin: "http://localhost:4200",
-        methods: ["GET", "POST"]
-    }
-});
-
+var io = require('socket.io')(http);
+io.origins(['*']);
 
 //abrindo evento de conexão
 io.on('connection', (socket) => {
@@ -31,7 +26,6 @@ app.get('/', (req, res) => {
 app.get('/chat', (req, res) => {
     res.render('chat');
 })
-app.use(require('cors')())
 
 http.listen(process.env.PORT || 3000, () => {
     console.log("SERVER ON")
