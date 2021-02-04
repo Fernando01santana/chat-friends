@@ -10,10 +10,11 @@ const io = require('socket.io')(server, {
         credentials: true
     }
 });
-
+var usuarios = 0;
 //abrindo evento de conexão
 io.on('connection', (socket) => {
-
+    usuarios++;
+    console.log("Usuarios conectados ate o momento: " + usuarios)
     socket.on('disconnect', () => {
         console.log("desconectado")
     })
