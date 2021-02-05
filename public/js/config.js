@@ -1,4 +1,5 @@
 //conecta com o servidor
+
 var socket = io('https://chatfriendscs.herokuapp.com');
 socket.on('connect', () => {
     $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuario entrou</div>`)
@@ -13,7 +14,7 @@ function sair() {
 //mostra a mensagem
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
-    if (data.username === username) {
+    if (data.username === usernameOn) {
         $('#msgs').append(`<div class="alert alert-dark m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
     } else {
         $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
