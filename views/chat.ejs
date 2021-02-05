@@ -95,22 +95,22 @@
 
                 </div>
             </div>
-            <form>
-                <div class="row">
-                    <div class="col-md-8">
-                        <input type='text' id='msg' class="w-100 mb-2 form-control redondo" name='texto_mensagem'
-                            placeholder="escreva sua mensagem..." />
-                    </div>
-                    <div class="col-md-2">
-                        <input type='button' class="btn btn-outline-primary w-100 mb-2 up" value='Enviar mensagem!'
-                            onclick="enviar()" />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="button" class="btn btn-outline-danger w-100 sair" value="sair" onclick="sair()">
-                    </div>
 
+            <div class="row mt-3">
+                <div class="col-md-8">
+                    <input type='text' id='msg' class="w-100 mb-2 form-control redondo" name='texto_mensagem'
+                        placeholder="escreva sua mensagem..." onkeypress="envmsg(event)" />
                 </div>
-            </form>
+                <div class="col-md-2">
+                    <input type='button' class="btn btn-outline-primary w-100 mb-2 up" value='Enviar mensagem!'
+                        onclick="envia()" />
+                </div>
+                <div class="col-md-2">
+                    <input type="button" class="btn btn-outline-danger w-100 sair" value="sair" onclick="sair()">
+                </div>
+
+            </div>
+
         </div>
     </div>
 

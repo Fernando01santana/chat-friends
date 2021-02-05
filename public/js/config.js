@@ -34,3 +34,11 @@ function enviar() {
     $('#msg').val(" ")
     socket.emit("msg", { username: username, msg: msg });
 }
+
+function envmsg(event) {
+    if (event.which == 13 || event.keyCode == 13) {
+        enviar()
+        return false;
+    }
+    return true;
+};
