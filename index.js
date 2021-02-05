@@ -1,7 +1,6 @@
 var express = require('express')
 const app = express();
 const server = require('http').createServer(app);
-app.use(express.static('public'));
 var cors = require('cors')
 app.use(cors())
 const io = require('socket.io')(server, {
@@ -11,11 +10,10 @@ const io = require('socket.io')(server, {
         credentials: true
     }
 });
-var usuarios = 0;
+app.use(express.static('public'));
 //abrindo evento de conexão
 io.on('connection', (socket) => {
-    usuarios++;
-    console.log("Usuarios conectados ate o momento: " + usuarios)
+
     socket.on('disconnect', () => {
         console.log("desconectado")
     })

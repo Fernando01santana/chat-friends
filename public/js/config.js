@@ -20,12 +20,9 @@ function sair() {
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
-    var chat = document.getElementById('msgs');
-    var p = document.createElement('p');
-    p.innerHTML = data.username + " diz :" + data.msg
-    chat.append(p)
-
+    $('#msgs').append(`<div class="alert alert-primary m-2" role="alert">${data.username} diz:${data.msg}</div>`)
 })
+
 //evento de captura
 function enviar() {
     var msgField = document.getElementById('msg')
