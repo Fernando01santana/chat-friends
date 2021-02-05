@@ -32,12 +32,13 @@ function enviar() {
     var msg = msgField.value;
     var username = usernameField.value;
     $('#msg').val(" ")
+    $(".msgs").scrollTop(10000000000);
     socket.emit("msg", { username: username, msg: msg });
 }
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
-        enviar()
+        setTimeout(enviar, 1000);
         return false;
     }
     return true;
