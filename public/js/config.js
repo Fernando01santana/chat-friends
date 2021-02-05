@@ -12,7 +12,12 @@ function sair() {
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
-    $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+    const usernameOn = $('#username').val()
+    if (data.username === username) {
+        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+    } else {
+        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+    }
 })
 
 socket.on('new-user', () => {
