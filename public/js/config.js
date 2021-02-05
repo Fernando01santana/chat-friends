@@ -12,7 +12,7 @@ function sair() {
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
-    $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert">${data.username} diz:${data.msg}</div>`)
+    $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
 })
 
 socket.on('new-user', () => {
