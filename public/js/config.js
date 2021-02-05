@@ -39,6 +39,7 @@ function enviar() {
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
         //setTimeout(enviar, 1000);
+        $('#username').attr("disabled", true);
         enviar()
         return false;
     }
