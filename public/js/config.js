@@ -15,9 +15,9 @@ function sair() {
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
     if (data.username === usernameOn) {
-        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
-    } else {
         $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+    } else {
+        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
     }
 })
 
