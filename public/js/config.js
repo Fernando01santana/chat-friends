@@ -31,6 +31,6 @@ function enviar() {
     var usernameField = document.getElementById('username')
     var msg = msgField.value;
     var username = usernameField.value;
-    $('msg').val("")
+    $('#msg').val(" ")
     socket.emit("msg", { username: username, msg: msg });
 }
