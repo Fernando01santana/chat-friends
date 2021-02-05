@@ -1,7 +1,10 @@
 var express = require('express')
 const app = express();
+const xXssProtection = require("x-xss-protection");
 const server = require('http').createServer(app);
 var cors = require('cors')
+
+app.use(xXssProtection());
 app.use(cors())
 const io = require('socket.io')(server, {
     cors: {

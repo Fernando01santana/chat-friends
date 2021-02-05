@@ -2,17 +2,23 @@
 
 var socket = io('https://chatfriendscs.herokuapp.com');
 socket.on('connect', () => {
+    let params = (new URL(document.location)).searchParams;
+    let user = params.get("username");
+    $('#username').val(user)
+    $('#username').attr("disabled", true);
     $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuario entrou</div>`)
 });
 function sair() {
     var usernameField = document.getElementById('username')
     var username = usernameField.value;
-
+    window.location.href = "/";
     $('#msgs').append(`<div class="alert alert-danger m-2 " role="alert">${username} se desconectou</div>`)
 }
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
+
+
     const usernameOn = $('#username').val()
     if (data.username === usernameOn) {
         $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
@@ -31,7 +37,7 @@ function enviar() {
     var username = $('#username').val()
 
     $('#msg').val("")
-    $('#username').attr("disabled", true);
+
     if (msg != '') {
         console.log(msg)
         socket.emit("msg", { username: username, msg: msg });
@@ -49,3 +55,6 @@ function envmsg(event) {
     $('#username').attr("disabled", true);
     return true;
 };
+
+//var messageBody = document.querySelector('#messageBody');
+//messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;

@@ -10,29 +10,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Chat friends</title>
     <style>
+        body,
+        html {
+            background-image: url('https://i.imgur.com/xhiRfL6.jpg');
+            height: 100%;
+        }
 
+        #profile-img {
+            height: 180px;
+        }
+
+        .h-80 {
+            height: 80% !important;
+        }
     </style>
 </head>
 
 <body>
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <h4 class="text-white">Chat v0.1</h4>
-                <span class="text-muted">Divirta-se!</span><br>
-                <a href="/chat" class="btn btn-primary">entrar</a>
+    <div class="container h-80">
+        <div class="row align-items-center h-100">
+            <div class="col-md-3 mx-auto">
+                <div class="text-center">
+                    <img id="profile-img" class="rounded-circle profile-img-card"
+                        src="https://i.imgur.com/6b6psnA.png" />
+                    <p id="profile-name" class="profile-name-card"></p>
+                    <form class="form-signin" action="/chat" method="GET">
 
+
+                        <input type="text" name="username" id="inputPassword" class="form-control form-group w-100"
+                            placeholder="password" required autofocus>
+                        <button class="btn btn-lg btn-primary btn-block btn-signin w-100" type="submit">enter</button>
+                    </form><!-- /form -->
+                </div>
             </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
     </div>
 
     <!-- Optional JavaScript -->

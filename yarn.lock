@@ -1319,6 +1319,11 @@ ws@~7.4.2:
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.3.tgz#1f9643de34a543b8edb124bdcbc457ae55a6e5cd"
   integrity sha512-hr6vCR76GsossIRsr8OLR9acVVm1jyfEWvhbNjtgPOrfvAlKzvyeg/P6r8RuDjRyrcQoPQT7K0DGEPc7Ae6jzA==
 
+x-xss-protection@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-2.0.0.tgz#217819c1b5344c4143927355b5d9aa6258c9ed20"
+  integrity sha512-2meB9rRv0kIpwIqH37HjHUvxpUeoJPDQvKUH+Pt3tIjySxh+fMge2MQskM73lKW/2foaBck0fOuhUJTxjhK2EQ==
+
 xdg-basedir@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
