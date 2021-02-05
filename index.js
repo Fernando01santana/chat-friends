@@ -13,13 +13,17 @@ const io = require('socket.io')(server, {
 app.use(express.static('public'));
 //abrindo evento de conexão
 io.on('connection', (socket) => {
-
+    console.log(`Socket conectado ${socket.id}`)
     socket.on('disconnect', () => {
         console.log("desconectado")
     })
 
     socket.on('msg', (data) => {
         io.emit('showmsg', data);
+    })
+
+    socket.on('mensagem', () => {
+        io.emit('new-user')
     })
 
 })
@@ -34,6 +38,4 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 })
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log("SERVER ON")
-})
+server.listen(process.env.PORT || 3000)

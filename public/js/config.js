@@ -1,28 +1,24 @@
 //conecta com o servidor
 var socket = io('https://chatfriendscs.herokuapp.com');
-
+socket.on('connect', () => {
+    $('#msgs').append(`<div class="alert alert-success m-2 w-50" role="alert">Um novo usuario entrou</div>`)
+});
 function sair() {
     var usernameField = document.getElementById('username')
     var username = usernameField.value;
 
-    var chat = document.getElementById('msgs');
-    var b = document.createElement('b');
-    b.innerHTML = username + " saiu"
-    chat.append(b)
-
-
-    socket.on('disconnect', () => {
-
-
-    })
+    $('#msgs').append(`<div class="alert alert-danger m-2 w-50" role="alert">${username} se desconectou</div>`)
 }
-
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
-    $('#msgs').append(`<div class="alert alert-primary m-2" role="alert">${data.username} diz:${data.msg}</div>`)
+    $('#msgs').append(`<div class="alert alert-primary m-2 w-50 redondo" role="alert">${data.username} diz:${data.msg}</div>`)
 })
 
+socket.on('new-user', () => {
+    $('#msgs').append(`<div class="alert alert-success m-2 w-50 redondo" role="alert">Um novo usuario entrou</div>`)
+
+})
 //evento de captura
 function enviar() {
     var msgField = document.getElementById('msg')

@@ -28,31 +28,35 @@
             margin: 15px 0;
         }
 
-        form input[type='text'] {
-            border: 2px solid #45C5BF;
-            border-radius: 5px;
+        form .sair {
+
+            font-weight: bold;
             padding: 5px;
             width: 80.5%;
+            border-radius: 20px;
         }
 
-        form input[type='button'] {
-            background: #45C5BF;
+        form .up {
+
             border: none;
             border-radius: 5px;
-            color: #FFF;
-            cursor: pointer;
             font-weight: bold;
-            padding: 7px 5px;
             width: 19%;
+            border-radius: 20px;
         }
 
         #chat {
             background: #FFF;
-            border: 2px solid #45C5BF;
+            border-radius: 20px;
             height: 300px;
         }
 
+        .redondo {
+            border-radius: 10px;
+        }
+
         .msgs {
+            border-radius: 20px;
             padding-top: 1em;
             height: 100%;
             width: 100%;
@@ -70,18 +74,19 @@
 <body>
 
     <div class="container">
+        <input type='text' id='username' class="w-100 mb-2 form-control redondo" name='texto_mensagem'
+            placeholder="Nome de usuario" />
         <div id="chat">
             <div id="msgs" class="msgs">
 
             </div>
         </div>
         <form>
-            <input type='text' id='username' class="w-100 mb-2" name='texto_mensagem'
-                placeholder="informe seu nick..." />
-            <input type='text' id='msg' class="w-100 mb-2" name='texto_mensagem'
+
+            <input type='text' id='msg' class="w-100 mb-2 form-control redondo" name='texto_mensagem'
                 placeholder="escreva sua mensagem..." />
-            <input type='button' class="btn btn-primary w-100 mb-2" value='Enviar mensagem!' onclick="enviar()" />
-            <input class="btn btn-danger w-100" value="sair" onclick="sair()">
+            <input type='button' class="btn btn-primary w-100 mb-2 up" value='Enviar mensagem!' onclick="enviar()" />
+            <input type="button" class="btn btn-danger w-100 sair" value="sair" onclick="sair()">
         </form>
 
     </div>
