@@ -27,21 +27,25 @@ socket.on('new-user', () => {
 })
 //evento de captura
 function enviar() {
-    var msgField = document.getElementById('msg')
-    var usernameField = document.getElementById('username')
-    var msg = msgField.value;
-    var username = usernameField.value;
-    $('#msg').val(" ")
-    $(".msgs").scrollTop(10000000000);
-    socket.emit("msg", { username: username, msg: msg });
+    var msg = $('#msg').val()
+    var username = $('#username').val()
+
+    $('#msg').val("")
+    $('#username').attr("disabled", true);
+    if (msg != '') {
+        console.log(msg)
+        socket.emit("msg", { username: username, msg: msg });
+    } else {
+        console.log("vazio")
+    }
 }
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
         //setTimeout(enviar, 1000);
-        $('#username').attr("disabled", true);
         enviar()
         return false;
     }
+    $('#username').attr("disabled", true);
     return true;
 };
