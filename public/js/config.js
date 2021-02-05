@@ -38,7 +38,8 @@ function enviar() {
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
-        setTimeout(enviar, 1000);
+        //setTimeout(enviar, 1000);
+        enviar()
         return false;
     }
     return true;
