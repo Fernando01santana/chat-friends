@@ -50,7 +50,7 @@ function enviar() {
         if (state === false) {
             socket.emit("msg", { username: username, msg: msg });
         } else {
-            window.location.href = "/";
+            sair()
         }
 
     } else {
