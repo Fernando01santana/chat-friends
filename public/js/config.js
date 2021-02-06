@@ -1,13 +1,19 @@
 //conecta com o servidor
+var socket = io();
 
-var socket = io('https://chatfriendscs.herokuapp.com');
-socket.on('connect', () => {
+socket.on('connect', (client) => {
     let params = (new URL(document.location)).searchParams;
     let user = params.get("username");
     $('#username').val(user)
     $('#username').attr("disabled", true);
-    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuario entrou</div>`)
+    //$('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuario entrou</div>`)
 });
+
+//exibe que um novo usuario
+const username = $('#username').val()
+socket.on('user', (msg) => {
+    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">${msg}</div>`)
+})
 function sair() {
     var usernameField = document.getElementById('username')
     var username = usernameField.value;
@@ -17,8 +23,6 @@ function sair() {
 
 //mostra a mensagem
 socket.on('showmsg', (data) => {
-
-
     const usernameOn = $('#username').val()
     if (data.username === usernameOn) {
         $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
@@ -27,15 +31,14 @@ socket.on('showmsg', (data) => {
     }
 })
 
-socket.on('new-user', () => {
-    $('#msgs').append(`<div class="alert alert-success m-2  redondo" role="alert">Um novo usuario entrou</div>`)
 
-})
+
+
 //evento de captura
 function enviar() {
     var msg = $('#msg').val()
     var username = $('#username').val()
-
+    filterXSS(msg);
     $('#msg').val("")
 
     if (msg != '') {
