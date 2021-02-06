@@ -1,7 +1,10 @@
 //conecta com o servidor
 var socket = io();
 let params = (new URL(document.location)).searchParams;
-
+let valueInput = $('#username').val();
+if (valueInput === '') {
+    window.location.href = "/";
+}
 socket.on('connect', (client) => {
     let user = params.get("username");
     $('#username').val(user)
@@ -20,15 +23,22 @@ socket.on('sair', (data) => {
     $('#msgs').append(`<div class="alert alert-danger m-2  redondo" role="alert"><strong>${data.username}</strong> saiu</div>`)
 })
 //mostra a mensagem
+
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
     if (data.username === usernameOn) {
-        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}</strong> diz:${data.msg}</div>`)
     } else {
-        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" role="alert"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}</strong> diz:${data.msg}</div>`)
     }
 })
-
+function callUser(data) {
+    console.log(`${data.username}`)
+    // $('#mensagem').click(() => {
+    //     console.log("clicou")
+    //     $('#msgs').append(`<div class="alert alert-dark m-2  redondo " role="alert"><strong>${data.username}</strong> funfou</div>`)
+    // })
+}
 
 
 
@@ -40,7 +50,6 @@ function enviar() {
     $('#msg').val("")
 
     if (msg != '') {
-        console.log(msg)
         const script = "<script>";
         const state = msg.indexOf(script)
         if (state === true) {
@@ -55,7 +64,7 @@ function enviar() {
 }
 
 var username = params.get("username");
-console.log(username)
+
 socket.emit('user', { username: username })
 socket.on('user-msg', (data) => {
     console.log(data)
