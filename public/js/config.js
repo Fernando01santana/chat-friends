@@ -45,7 +45,14 @@ function enviar() {
 
     if (msg != '') {
         console.log(msg)
-        socket.emit("msg", { username: username, msg: msg });
+        const script = "<script>";
+        const state = msg.indexOf(script)
+        if (state === false) {
+            socket.emit("msg", { username: username, msg: msg });
+        } else {
+            window.location.href = "/";
+        }
+
     } else {
         console.log("vazio")
     }
