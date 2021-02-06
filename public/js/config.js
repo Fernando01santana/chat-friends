@@ -9,10 +9,6 @@ socket.on('connect', (client) => {
     //$('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuario entrou</div>`)
 });
 
-//exibe que um novo usuario
-socket.on('user', (msg) => {
-    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">${msg}</div>`)
-})
 function sair() {
     var usernameField = document.getElementById('username')
     var username = usernameField.value;
@@ -57,6 +53,14 @@ function enviar() {
         console.log("vazio")
     }
 }
+
+var username = $('#username').val()
+socket.emit('user', { username: username })
+socket.on('user-msg', (data) => {
+    console.log(data)
+    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuário entrou</div>`)
+})
+
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {

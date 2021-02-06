@@ -17,7 +17,10 @@ app.use(express.static('public'));
 //abrindo evento de conexão
 io.on('connect', (socket) => {
 
-    socket.broadcast.emit('user', ' um novo usuario acabou de entrar ');
+    socket.on('user', (data) => {
+        console.log(data)
+        socket.broadcast.emit('user-msg', data)
+    })
 
     socket.on('logout', (data) => {
         io.emit('sair', data)
