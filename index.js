@@ -19,8 +19,8 @@ io.on('connect', (socket) => {
 
     socket.broadcast.emit('user', ' um novo usuario acabou de entrar ');
 
-    socket.on('disconnect', () => {
-        console.log("desconectado")
+    socket.on('logout', (data) => {
+        io.emit('sair', data)
     })
 
     socket.on('msg', (data) => {

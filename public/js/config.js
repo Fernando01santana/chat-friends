@@ -10,17 +10,19 @@ socket.on('connect', (client) => {
 });
 
 //exibe que um novo usuario
-const username = $('#username').val()
 socket.on('user', (msg) => {
     $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">${msg}</div>`)
 })
 function sair() {
     var usernameField = document.getElementById('username')
     var username = usernameField.value;
+    socket.emit("logout", { username: username });
     window.location.href = "/";
     $('#msgs').append(`<div class="alert alert-danger m-2 " role="alert">${username} se desconectou</div>`)
 }
-
+socket.on('sair', (data) => {
+    $('#msgs').append(`<div class="alert alert-danger m-2  redondo" role="alert"><strong>${data.username}</strong> saiu</div>`)
+})
 //mostra a mensagem
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
