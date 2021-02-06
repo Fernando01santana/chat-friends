@@ -1,10 +1,7 @@
 //conecta com o servidor
 var socket = io();
 let params = (new URL(document.location)).searchParams;
-let valueInput = $('#username').val();
-if (valueInput === '') {
-    window.location.href = "/";
-}
+
 socket.on('connect', (client) => {
     let user = params.get("username");
     $('#username').val(user)
@@ -81,6 +78,12 @@ function envmsg(event) {
     $('#username').attr("disabled", true);
     return true;
 };
-
+function verificaName() {
+    let valueInput = $('#username').val();
+    if (valueInput === 1) {
+        window.location.href = "/";
+    }
+}
+verificaName()
 var messageBody = document.querySelector('#msgs');
 messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;

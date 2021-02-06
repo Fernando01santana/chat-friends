@@ -120,14 +120,37 @@
                         onclick="enviar()" />
                 </div>
                 <div class="col-md-2">
-                    <input type="button" class="btn btn-outline-danger w-100 sair" value="sair" onclick="sair()">
+                    <input type="button" class="btn btn-outline-danger w-100 sair" data-toggle="modal"
+                        data-target="#exampleModal" value="sair">
                 </div>
 
             </div>
 
         </div>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo sair?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja sair? há pessoas interessantes aqui...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
+                        onclick="sair()">Sim</button>
+                    <button type="button" class="btn btn-outline-danger w-100 " data-dismiss="modal"
+                        aria-label="Close">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
