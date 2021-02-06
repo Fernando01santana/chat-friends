@@ -18,7 +18,6 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
 
     socket.on('user', (data) => {
-        console.log(data)
         socket.broadcast.emit('user-msg', data)
     })
 

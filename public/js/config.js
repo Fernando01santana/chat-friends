@@ -1,8 +1,8 @@
 //conecta com o servidor
 var socket = io();
+let params = (new URL(document.location)).searchParams;
 
 socket.on('connect', (client) => {
-    let params = (new URL(document.location)).searchParams;
     let user = params.get("username");
     $('#username').val(user)
     $('#username').attr("disabled", true);
@@ -54,11 +54,12 @@ function enviar() {
     }
 }
 
-var username = $('#username').val()
+var username = params.get("username");
+console.log(username)
 socket.emit('user', { username: username })
 socket.on('user-msg', (data) => {
     console.log(data)
-    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert">Um novo usuário entrou</div>`)
+    $('#msgs').append(`<div class="alert alert-success m-2 " role="alert"><strong>${data.username}</strong> entrou</div>`)
 })
 
 
