@@ -36,12 +36,14 @@
                     <img id="profile-img" class="rounded-circle profile-img-card"
                         src="https://i.imgur.com/6b6psnA.png" />
                     <p id="profile-name" class="profile-name-card"></p>
-                    <form class="form-signin" action="/chat" method="GET">
+                    <form class="form-signin" id="env" action="/chat" method="GET">
 
 
-                        <input type="text" name="username" id="inputPassword" class="form-control form-group w-100"
+                        <input type="text" name="username" id="username" class="form-control form-group w-100"
                             placeholder="username" required autofocus>
-                        <button class="btn btn-lg btn-primary btn-block btn-signin w-100" type="submit">enter</button>
+                        <button class="btn btn-lg btn-primary btn-block btn-signin w-100" type="button"
+                            onclick="up(event)">enter</button>
+                        <p id="msg" style="color:white;">Bela tentativa</p>
                     </form><!-- /form -->
                 </div>
             </div>
@@ -59,6 +61,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="js/validationHome.js"></script>
 </body>
 
 </html>

@@ -47,10 +47,10 @@ function enviar() {
         console.log(msg)
         const script = "<script>";
         const state = msg.indexOf(script)
-        if (state === false) {
-            socket.emit("msg", { username: username, msg: msg });
-        } else {
+        if (state === true) {
             sair()
+        } else {
+            socket.emit("msg", { username: username, msg: msg });
         }
 
     } else {
@@ -68,5 +68,5 @@ function envmsg(event) {
     return true;
 };
 
-//var messageBody = document.querySelector('#messageBody');
-//messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+var messageBody = document.querySelector('#msgs');
+messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
