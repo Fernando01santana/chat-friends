@@ -79,8 +79,10 @@ function envmsg(event) {
     return true;
 };
 function verificaName() {
+    console.log("entrou aqui")
     let valueInput = $('#username').val();
-    if (valueInput === 1) {
+    console.log(valueInput)
+    if (valueInput === '') {
         window.location.href = "/";
     }
 }
