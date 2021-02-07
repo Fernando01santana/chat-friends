@@ -1,6 +1,10 @@
 //conecta com o servidor
 var socket = io();
 let params = (new URL(document.location)).searchParams;
+function playMusic() {
+    const music = document.querySelector('audio')
+    music.play()
+}
 
 socket.on('connect', (client) => {
     let user = params.get("username");
@@ -23,9 +27,11 @@ socket.on('sair', (data) => {
 
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
+
     if (data.username === usernameOn) {
         $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}: </strong>${data.msg}</div>`)
     } else {
+        playMusic()
         $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username} :</strong>${data.msg}</div>`)
     }
 })
@@ -70,12 +76,16 @@ socket.on('user-msg', (data) => {
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
+
         enviar()
         return false;
     }
     $('#username').attr("disabled", true);
     return true;
 };
+
+
+
 function verificaName() {
     console.log("entrou aqui")
     let valueInput = $('#username').val();
