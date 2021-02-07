@@ -24,9 +24,9 @@ socket.on('sair', (data) => {
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
     if (data.username === usernameOn) {
-        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}: </strong>${data.msg}</div>`)
     } else {
-        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}</strong> diz:${data.msg}</div>`)
+        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username} :</strong>${data.msg}</div>`)
     }
 })
 function callUser(data) {
