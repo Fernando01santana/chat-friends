@@ -64,7 +64,6 @@ var username = params.get("username");
 
 socket.emit('user', { username: username })
 socket.on('user-msg', (data) => {
-    console.log(data)
     $('#msgs').append(`<div class="alert alert-success m-2 " role="alert"><strong>${data.username}</strong> entrou</div>`)
 })
 
@@ -86,5 +85,5 @@ function verificaName() {
     }
 }
 setTimeout(verificaName, 1000);
-var messageBody = document.querySelector('#msgs');
-messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+$("#msgs").scrollTop(300);

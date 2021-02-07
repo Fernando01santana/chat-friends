@@ -13,6 +13,7 @@ const io = require('socket.io')(server, {
         credentials: true
     }
 });
+var usuarios = [];
 app.use(express.static('public'));
 //abrindo evento de conexão
 io.on('connect', (socket) => {
