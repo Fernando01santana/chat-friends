@@ -71,7 +71,6 @@ socket.on('user-msg', (data) => {
 
 function envmsg(event) {
     if (event.which == 13 || event.keyCode == 13) {
-        //setTimeout(enviar, 1000);
         enviar()
         return false;
     }
@@ -86,6 +85,6 @@ function verificaName() {
         window.location.href = "/";
     }
 }
-verificaName()
+setTimeout(verificaName, 1000);
 var messageBody = document.querySelector('#msgs');
 messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
