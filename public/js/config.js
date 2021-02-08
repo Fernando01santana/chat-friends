@@ -14,7 +14,7 @@ function playMusic() {
     var minuto = (dataAtual.getMinutes() < 10 ? '0' : '') + dataAtual.getMinutes();
     var segundo = (dataAtual.getSeconds() < 10 ? '0' : '') + dataAtual.getSeconds();
 
-    var dataFormatada = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
+    var dataFormatada = hora + ":" + minuto + ":" + segundo;
     return dataFormatada;
 }
 
