@@ -1,9 +1,21 @@
 //conecta com o servidor
 var socket = io();
 let params = (new URL(document.location)).searchParams;
+
 function playMusic() {
     const music = document.querySelector('audio')
     music.play()
+} function pegarDataAtual() {
+    var dataAtual = new Date();
+    var dia = (dataAtual.getDate() < 10 ? '0' : '') + dataAtual.getDate();
+    var mes = ((dataAtual.getMonth() + 1) < 10 ? '0' : '') + (dataAtual.getMonth() + 1);
+    var ano = dataAtual.getFullYear();
+    var hora = (dataAtual.getHours() < 10 ? '0' : '') + dataAtual.getHours();
+    var minuto = (dataAtual.getMinutes() < 10 ? '0' : '') + dataAtual.getMinutes();
+    var segundo = (dataAtual.getSeconds() < 10 ? '0' : '') + dataAtual.getSeconds();
+
+    var dataFormatada = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
+    return dataFormatada;
 }
 
 socket.on('connect', (client) => {
@@ -27,12 +39,14 @@ socket.on('sair', (data) => {
 
 socket.on('showmsg', (data) => {
     const usernameOn = $('#username').val()
-
+    var date = new Date()
+    console.log(date)
     if (data.username === usernameOn) {
-        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username}: </strong>${data.msg}</div>`)
+
+        $('#msgs').append(`<div class="alert alert-primary m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})">${pegarDataAtual()} <strong>${data.username}: </strong>${data.msg}</div>`)
     } else {
         playMusic()
-        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})"><strong>${data.username} :</strong>${data.msg}</div>`)
+        $('#msgs').append(`<div class="alert alert-dark m-2  redondo" id="mensagem" role="alert" onclick="callUser(${data})">${pegarDataAtual()} <strong>${data.username} :</strong>${data.msg}</div>`)
     }
 })
 function callUser(data) {
@@ -96,4 +110,3 @@ function verificaName() {
 }
 setTimeout(verificaName, 1000);
 
-$("#msgs").scrollTop(300);

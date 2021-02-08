@@ -16,6 +16,7 @@ const io = require('socket.io')(server, {
 var usuarios = [];
 app.use(express.static('public'));
 //abrindo evento de conexão
+
 io.on('connect', (socket) => {
 
     socket.on('user', (data) => {
